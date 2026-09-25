@@ -13,7 +13,8 @@
       --primary-dark: #005670;
       --primary-light: #e6f4f8;
       --accent-orange: #ef7d19;
-      --accent-yellow: #f8c045;
+      --accent-red: #d94b4b;
+      --accent-green: #2fa360;
       --text-main: #23353e;
       --text-muted: #5e737e;
       --bg-light: #f4f8fa;
@@ -23,18 +24,14 @@
       --shadow: 0 8px 24px rgba(2, 122, 158, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-light);
       color: var(--text-main);
       line-height: 1.65;
-      padding-bottom: 60px;
+      padding-bottom: 70px;
     }
 
     /* 頂部主視覺 Banner 區域 */
@@ -56,7 +53,7 @@
     /* 導言說明區 */
     .intro-section {
       text-align: center;
-      padding: 30px 20px 10px;
+      padding: 28px 20px 10px;
     }
     .badge {
       display: inline-block;
@@ -77,9 +74,9 @@
       margin-bottom: 8px;
     }
     .intro-section p {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
     }
 
@@ -89,14 +86,132 @@
       padding: 0 16px;
     }
 
+    /* 即時庫存監控看板 (Live Stock Board) */
+    .stock-board {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin: 20px 0 24px;
+    }
+    .stock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #eef3f6;
+      padding-bottom: 10px;
+    }
+    .stock-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(47, 163, 96, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(47, 163, 96, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(47, 163, 96, 0); }
+    }
+    .stock-update-time {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .stock-card {
+      background: var(--bg-light);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      border: 1px solid #e3edf2;
+    }
+    .stock-item-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .stock-val {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .stock-val.low {
+      color: var(--accent-red);
+    }
+    .stock-desc {
+      font-size: 0.75rem;
+      color: #889ba6;
+      margin-top: 4px;
+    }
+
+    /* 交通航班快捷按鈕區 */
+    .traffic-links {
+      background: #eef7fa;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      border: 1px dashed #b9d8e4;
+    }
+    .traffic-links h3 {
+      font-size: 0.98rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    .btn-traffic {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #ffffff;
+      color: var(--primary-dark);
+      border: 1px solid #c9dfe8;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .btn-traffic:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
     /* 重要提醒 Callout */
     .callout-box {
       background: #fff8eb;
       border-left: 5px solid var(--accent-orange);
       padding: 18px 20px;
       border-radius: 10px;
-      margin: 20px 0 26px;
-      box-shadow: 0 3px 10px rgba(239, 125, 25, 0.1);
+      margin-bottom: 24px;
+      box-shadow: 0 3px 10px rgba(239, 125, 25, 0.08);
     }
     .callout-title {
       font-weight: 700;
@@ -105,16 +220,14 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 8px;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
     }
     .callout-box ul {
       padding-left: 20px;
       color: #5d452d;
       font-size: 0.92rem;
     }
-    .callout-box li {
-      margin-bottom: 4px;
-    }
+    .callout-box li { margin-bottom: 4px; }
 
     /* 摘要對照表 */
     .table-container {
@@ -122,7 +235,7 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 16px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
       overflow-x: auto;
     }
     table {
@@ -141,9 +254,7 @@
       font-weight: 700;
       white-space: nowrap;
     }
-    tr:last-child td {
-      border-bottom: none;
-    }
+    tr:last-child td { border-bottom: none; }
 
     /* Tab 切換器 */
     .nav-tabs {
@@ -175,9 +286,7 @@
     }
 
     /* 活動卡片 */
-    .tab-content {
-      display: none;
-    }
+    .tab-content { display: none; }
     .tab-content.active {
       display: block;
       animation: fadeIn 0.3s ease;
@@ -233,7 +342,6 @@
       color: var(--text-muted);
     }
 
-    /* 九宮格示意展示 */
     .grid-preview {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -253,7 +361,7 @@
       border: 1px solid #d2e4ea;
     }
 
-    /* 摺疊問答 FAQ */
+    /* FAQ */
     .faq-item {
       background: var(--card-bg);
       border-radius: 10px;
@@ -271,17 +379,13 @@
       background: #fff;
       font-size: 0.95rem;
     }
-    .faq-question:hover {
-      background: #fafcfd;
-    }
+    .faq-question:hover { background: #fafcfd; }
     .faq-question::after {
       content: "+";
       font-size: 1.3rem;
       color: var(--primary);
     }
-    .faq-item.open .faq-question::after {
-      content: "−";
-    }
+    .faq-item.open .faq-question::after { content: "−"; }
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -292,10 +396,7 @@
       font-size: 0.92rem;
       border-top: 1px solid #eef3f6;
     }
-    .faq-item.open .faq-answer {
-      padding: 16px 20px;
-      max-height: 250px;
-    }
+    .faq-item.open .faq-answer { padding: 16px 20px; max-height: 250px; }
 
     footer {
       text-align: center;
@@ -309,9 +410,8 @@
 </head>
 <body>
 
-  <!-- 頂部滿版主視覺 Banner -->
+  <!-- 頂部主視覺 Banner -->
   <div class="hero-banner">
-    <!-- 請將主視覺圖檔檔名命名為 banner.png 並放在同一目錄，或替換成圖床網址 -->
     <img src="banner.png" alt="下一站天后！跟著媽祖遊馬祖 主視覺">
   </div>
 
@@ -323,6 +423,42 @@
 
   <div class="container">
 
+    <!-- 即時庫存監控看版 -->
+    <div class="stock-board">
+      <div class="stock-header">
+        <div class="stock-title"><span class="live-dot"></span> 禮贈品剩餘庫存（即時更新）</div>
+        <div class="stock-update-time" id="lastUpdated">即時連線中...</div>
+      </div>
+      <div class="stock-grid">
+        <div class="stock-card">
+          <div class="stock-item-name">朝聖限量盲盒公仔</div>
+          <div class="stock-val" id="stock-blindbox">載入中...</div>
+          <div class="stock-desc">總發行量 1,600 盒</div>
+        </div>
+        <div class="stock-card">
+          <div class="stock-item-name">島嶼彩蛋限量御守</div>
+          <div class="stock-val" id="stock-omamori">載入中...</div>
+          <div class="stock-desc">總發行量 500 份</div>
+        </div>
+        <div class="stock-card">
+          <div class="stock-item-name">地方共響特色伴手禮</div>
+          <div class="stock-val" id="stock-souvenir">充足</div>
+          <div class="stock-desc">各據點限量供應中</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 即時航班與交通資訊快捷列 -->
+    <div class="traffic-links">
+      <h3>✈️ 馬祖即時航班與船班動態（抵離交通查詢）</h3>
+      <div class="btn-group">
+        <a href="https://www.matsu-nsa.gov.tw/TrafficIndex.aspx" target="_blank" class="btn-traffic">🌐 馬祖全區即時交通</a>
+        <a href="https://www.uniair.com.tw/rwd/B2C/booking/flight_status.aspx" target="_blank" class="btn-traffic">✈️ 立榮航空航班動態</a>
+        <a href="https://www.fat.com.tw/flight-status" target="_blank" class="btn-traffic">✈️ 華信航空航班動態</a>
+        <a href="https://www.matsu.idv.tw/traffic.php" target="_blank" class="btn-traffic">🚢 馬祖島際交通船即時動態</a>
+      </div>
+    </div>
+
     <!-- 兌換資格重要提示 -->
     <div class="callout-box">
       <div class="callout-title">⚠️ 兌換前必看：資格與查驗規範</div>
@@ -333,7 +469,7 @@
       </ul>
     </div>
 
-    <!-- 快速導覽對照表 -->
+    <!-- 摘要對照表 -->
     <div class="table-container">
       <table>
         <thead>
@@ -568,6 +704,7 @@
   </div>
 
   <script>
+    // Tab 切換
     function switchTab(index) {
       const tabs = document.querySelectorAll('.tab-btn');
       const contents = document.querySelectorAll('.tab-content');
@@ -582,12 +719,66 @@
       });
     }
 
+    // FAQ 摺疊
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
         item.classList.toggle('open');
       });
     });
+
+    /* ========================================================
+       【即時庫存串接設定】
+       日後只要在 Google 試算表修改數字，網頁就會自動同步！
+       1. 建立一個 Google Sheets 試算表，第一欄放品名，第二欄放剩餘數量。
+       2. 點擊「檔案」->「共用」->「發布到網路」-> 選擇「CSV」格式發布。
+       3. 將產生的 CSV 網址貼在下方的 SHEET_CSV_URL 引號中。
+       ======================================================== */
+    const SHEET_CSV_URL = ""; // 填入你的 Google Sheets 公開 CSV 網址
+
+    // 預設/備援庫存數據（若尚未串接 Google Sheets 時會先顯示此數值）
+    const fallbackStock = {
+      blindbox: "1,280", // 盲盒剩餘數
+      omamori: "410",    // 御守剩餘數
+      souvenir: "充足"   // 伴手禮狀況
+    };
+
+    async function loadStock() {
+      const timeElem = document.getElementById("lastUpdated");
+      const elBlind = document.getElementById("stock-blindbox");
+      const elOmamori = document.getElementById("stock-omamori");
+      const elSouvenir = document.getElementById("stock-souvenir");
+
+      if (!SHEET_CSV_URL) {
+        // 使用預設數值
+        elBlind.innerText = fallbackStock.blindbox;
+        elOmamori.innerText = fallbackStock.omamori;
+        elSouvenir.innerText = fallbackStock.souvenir;
+        timeElem.innerText = "最後更新：" + new Date().toLocaleDateString();
+        return;
+      }
+
+      try {
+        const res = await fetch(SHEET_CSV_URL);
+        const text = await res.text();
+        const rows = text.split("\n").map(r => r.split(","));
+        
+        // 假設 Google 表格格式：第一列為標題，A2:公仔, B2:數量
+        if(rows[1]) elBlind.innerText = rows[1][1].trim();
+        if(rows[2]) elOmamori.innerText = rows[2][1].trim();
+        if(rows[3]) elSouvenir.innerText = rows[3][1].trim();
+        
+        const now = new Date();
+        timeElem.innerText = `最後更新：${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+      } catch (err) {
+        elBlind.innerText = fallbackStock.blindbox;
+        elOmamori.innerText = fallbackStock.omamori;
+        elSouvenir.innerText = fallbackStock.souvenir;
+        timeElem.innerText = "資料連線中";
+      }
+    }
+
+    loadStock();
   </script>
 </body>
 </html>
