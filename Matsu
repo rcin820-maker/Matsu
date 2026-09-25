@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下一站天后！跟著媽祖遊馬祖｜活動攻略與規則</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #007799;
+      --primary-light: #e6f4f8;
+      --accent-orange: #f28b30;
+      --accent-yellow: #f8c045;
+      --text-main: #2b3a42;
+      --text-muted: #627480;
+      --bg-light: #f5f9fb;
+      --card-bg: #ffffff;
+      --border-color: #dbe7ec;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0, 119, 153, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #005f7a 0%, #0088b0 60%, #38a3a5 100%);
+      color: white;
+      text-align: center;
+      padding: 48px 20px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: var(--bg-light);
+      border-radius: 50% 50% 0 0;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.98rem;
+      opacity: 0.92;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* 重要提醒 Callout */
+    .callout-box {
+      background: #fff8eb;
+      border-left: 5px solid var(--accent-orange);
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 24px 0;
+      box-shadow: 0 3px 10px rgba(242, 139, 48, 0.1);
+    }
+    .callout-title {
+      font-weight: 700;
+      color: #b75900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+    .callout-box ul {
+      padding-left: 20px;
+      color: #5d452d;
+      font-size: 0.92rem;
+    }
+    .callout-box li {
+      margin-bottom: 4px;
+    }
+
+    /* 摘要對照表 */
+    .table-container {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      margin-bottom: 30px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Tab 切換器 */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    .tab-btn {
+      flex: 1;
+      min-width: 120px;
+      background: #e1edf2;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 119, 153, 0.25);
+    }
+
+    /* 活動卡片 */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
+    }
+    .card h2 {
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-orange);
+      color: white;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+    .step-body h4 {
+      font-size: 1.02rem;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+    .step-body p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* 九宮格示意展示 */
+    .grid-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin: 14px 0;
+      background: #f0f6f8;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    .grid-cell {
+      background: white;
+      padding: 10px 4px;
+      border-radius: 6px;
+      border: 1px solid #d2e4ea;
+    }
+
+    /* 摺疊問答 FAQ */
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+    .faq-question:hover {
+      background: #fafcfd;
+    }
+    .faq-question::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--primary);
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-question::after {
+      content: "−";
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #fbfdfe;
+      padding: 0 20px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      border-top: 1px solid #eef3f6;
+    }
+    .faq-item.open .faq-answer {
+      padding: 16px 20px;
+      max-height: 250px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.82rem;
+      color: #92a4ad;
+      padding: 0 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">馬祖秋季限定活動</div>
+    <h1>下一站天后！跟著媽祖遊馬祖</h1>
+    <p>走訪四鄉五島宮廟連線、收集地方風土印記，限量盲盒公仔與紀念御守等你帶回家！</p>
+  </header>
+
+  <div class="container">
+
+    <!-- 兌換資格重要提示 -->
+    <div class="callout-box">
+      <div class="callout-title">⚠️ 兌換前必看：資格與查驗規範</div>
+      <ul>
+        <li><strong>兌換資格：</strong>僅限「<strong>非設籍連江縣之旅客</strong>」（連江縣在地服役軍人不具禮品兌換資格）。</li>
+        <li><strong>現場查證：</strong>兌獎時請本人出示「<strong>身分證明文件（含戶籍地）</strong>」及「<strong>抵達馬祖之機票/船票交通憑證</strong>」（僅現場核對，不留存影本）。</li>
+        <li><strong>獨立核銷：</strong>朝聖護照、三印彩蛋、地方旅遊集章各為獨立活動，印章不得互相折抵或合併計算。</li>
+      </ul>
+    </div>
+
+    <!-- 快速導覽對照表 -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>活動名稱</th>
+            <th>領卡／護照處</th>
+            <th>禮品兌換地點</th>
+            <th>限量好禮</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>馬祖朝聖之旅</strong></td>
+            <td>9間天后宮、福澳碼頭</td>
+            <td>福澳碼頭（或線上後送）</td>
+            <td>媽祖盲盒公仔（上限4盒）</td>
+          </tr>
+          <tr>
+            <td><strong>島嶼彩蛋三印成行</strong></td>
+            <td>《馬祖朝聖護照》內頁</td>
+            <td>福澳碼頭（或線上後送）</td>
+            <td>專屬刺繡御守（共500份）</td>
+          </tr>
+          <tr>
+            <td><strong>島嶼共響地方任務</strong></td>
+            <td>各機場、港口服務據點</td>
+            <td>福澳港指定服務據點</td>
+            <td>馬祖特色伴手禮</td>
+          </tr>
+          <tr>
+            <td><strong>海風同行日（昇天祭）</strong></td>
+            <td>現場活動服務台</td>
+            <td>現場活動服務台</td>
+            <td>無敵星星貼紙、提袋等</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 標籤導覽列 -->
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab(0)">九宮格朝聖</button>
+      <button class="tab-btn" onclick="switchTab(1)">三印成行彩蛋</button>
+      <button class="tab-btn" onclick="switchTab(2)">島嶼共響(食衣宿遊行)</button>
+      <button class="tab-btn" onclick="switchTab(3)">昇天祭同行日</button>
+    </div>
+
+    <!-- TAB 1: 朝聖之旅 -->
+    <div class="tab-content active">
+      <div class="card">
+        <h2>⛩️ 馬祖朝聖之旅（九宮格連線）</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">走訪馬祖各島 9 座天后宮，完成連線即可領取限量盲盒（每人上限4盒，全活動限量1,600份，兌完為止）。</p>
+        
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>領取專屬護照</h4>
+            <p>於 9 間天后宮或福澳碼頭免費索取散客專用《馬祖朝聖護照》（每人限領一本）。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>走訪宮廟集印</h4>
+            <p>在各廟宇參拜並於各宮專屬頁面蓋章。連線包含橫線3條、直線3條、對角線2條，共8條可能路線。</p>
+            <div class="grid-preview">
+              <div class="grid-cell">01 津沙境<br>(南竿)</div>
+              <div class="grid-cell">02 馬祖境<br>(南竿)</div>
+              <div class="grid-cell">03 坂里境<br>(北竿)</div>
+              <div class="grid-cell">04 金板境<br>(南竿)</div>
+              <div class="grid-cell">05 芹壁境<br>(北竿)</div>
+              <div class="grid-cell">06 青帆境<br>(西莒)</div>
+              <div class="grid-cell">07 田澳境<br>(西莒)</div>
+              <div class="grid-cell">08 福正境<br>(東莒)</div>
+              <div class="grid-cell">09 東引<br>(東引)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>兌換盲盒公仔</h4>
+            <p>• 完成 1 條線：領 1 盒<br>• 完成 2 條線：累計領 2 盒<br>• 完成 3 條線以上：累計領 3 盒<br>• 九宮全滿：累計領滿 4 盒（最高上限）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: 彩蛋三印 -->
+    <div class="tab-content">
+      <div class="card">
+        <h2>🥚 島嶼彩蛋・三印成行</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">使用《馬祖朝聖護照》彩蛋頁，完成三項不同任務各集1印，兌換限量限定御守（共500份）。</p>
+        
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>第一印｜天后連線印</h4>
+            <p>完成朝聖護照九宮格中任一條有效連線，即可請工作人員加蓋彩蛋天后連線印。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>第二印｜海陸交通印</h4>
+            <p>搭乘馬祖境內「島際交通船」或「台灣好行」觀光公車路線，憑搭乘憑證核章（台灣-馬祖往返交通不計入）。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>第三印｜風土體驗印</h4>
+            <p>前往指定文化場館（如北竿戰爭和平紀念公園主題館、南竿戰地文化博物館、東引水下博物館、東莒島燈塔展示館等）完成合照，上傳至「馬祖卡蹓趣」FB粉專指定貼文並加註標籤 <code>#島嶼彩蛋三印成行</code>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: 島嶼共響 -->
+    <div class="tab-content">
+      <div class="card">
+        <h2>🍲 島嶼共響・地方旅遊行動</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">深入馬祖在地生活，集滿五大類任務中任 4 類印章，即可換領地方伴手禮（需持專用集章卡）。</p>
+        
+        <div class="step-item">
+          <div class="step-num">食</div>
+          <div class="step-body">
+            <h4>嚐一口馬祖</h4>
+            <p>於公告之合作餐廳、小吃、飲品或伴手禮店消費（不限金額），持發票或收據至服務據點核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">衣</div>
+          <div class="step-body">
+            <h4>穿上馬祖</h4>
+            <p>身穿具辨識度之馬祖地名、文化圖案或活動識別服飾/配件，由服務據點現場查驗本人核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">宿</div>
+          <div class="step-body">
+            <h4>住一晚馬祖</h4>
+            <p>實際入住合作之合法旅宿，憑住宿發票、收據或房單至服務據點核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">遊</div>
+          <div class="step-body">
+            <h4>搭好行遊馬祖</h4>
+            <p>搭乘台灣好行觀光路線或完成指定導覽/觀光套裝體驗，持票券憑證核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">行</div>
+          <div class="step-body">
+            <h4>搭一程馬祖</h4>
+            <p>搭乘馬祖島與島之間的島際交通船，憑票根核章（不含台馬往返船票）。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: 海風同行日 -->
+    <div class="tab-content">
+      <div class="card">
+        <h2>🕊️ 海風同行日（昇天祭限定）</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">昇天祭期間現場快閃任務，現場民眾皆可自由參加！</p>
+        
+        <div class="step-item">
+          <div class="step-num">★</div>
+          <div class="step-body">
+            <h4>媽祖廟定位挑戰</h4>
+            <p>現場隨機抽出 3 張廟宇圖卡並正確擺放位置，即可獲得「無敵星星貼紙」（可抵用任一廟宇印章）；挑戰 2 分鐘內全對 9 張圖卡加碼贈限定好禮。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">★</div>
+          <div class="step-body">
+            <h4>三媽步道尋鷗霸</h4>
+            <p>走訪步道找到編號 1 至 3 號鷗霸裝置並合照任務卡，即可兌換實用飲料提袋一份。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 常見問答 -->
+    <h3 style="margin: 28px 0 14px; font-size: 1.2rem; color: var(--primary);">💬 常見問題 FAQ</h3>
+
+    <div class="faq-item">
+      <div class="faq-question">如果我從北竿或東引直接搭機返台，來不及去福澳港換禮品怎麼辦？</div>
+      <div class="faq-answer">
+        《馬祖朝聖護照》盲盒公仔及彩蛋御守均設有「官方線上後送表單」機制！只要拍照上傳已集滿之護照、身分資料及抵達馬祖交通證明，審核通過後即由專案為您免費宅配到家。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">連江縣居民或在地服役國軍可以換禮品嗎？</div>
+      <div class="faq-answer">
+        歡迎所有人參與各景點踩點與集章體驗；但為帶動外地觀光效益，實體禮品（公仔、御守、伴手禮）之兌換對象僅限「非設籍連江縣之旅客」，在地國軍亦受限戶籍規範。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">台灣本島到馬祖的機票／船票可以拿來蓋「行章」嗎？</div>
+      <div class="faq-answer">
+        不行喔！交通類印章（包含地方旅遊的行章與彩蛋的海陸交通印）僅認列「馬祖各島之間的島際交通船」或「台灣好行觀光公車」，往返台灣與馬祖之交通不計入任務。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">集章卡如果不小心遺失了可以補蓋嗎？</div>
+      <div class="faq-answer">
+        若旅客能出示確切之乘船票根、發票收據等紀錄，工作人員可協助重新認證補蓋，但每人領獎皆有嚴格實名核銷登錄，已領過之禮品無法再次領取。
+      </div>
+    </div>
+
+    <footer>
+      主辦單位：連江縣交通旅遊局 ｜ 承辦單位：和泰汽車股份有限公司<br>
+      © 2026 馬祖！下一站天后活動小組 All Rights Reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    // Tab 切換
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+      tabs.forEach((tab, i) => {
+        if(i === index) {
+          tab.classList.add('active');
+          contents[i].classList.add('active');
+        } else {
+          tab.classList.remove('active');
+          contents[i].classList.remove('active');
+        }
+      });
+    }
+
+    // FAQ 摺疊展開
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
