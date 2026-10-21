@@ -423,19 +423,29 @@
 
   <div class="container">
 
+    <!-- 【目前模式】：公仔製作中，提示線上表單 -->
+    <div style="background: #fff8eb; border: 1.5px solid var(--accent-orange); border-radius: 12px; padding: 18px 20px; margin-bottom: 24px; box-shadow: var(--shadow);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+        <div style="font-size: 1.1rem; font-weight: bold; color: var(--text-main);">🎁 媽祖盲盒公仔 (全套4款)</div>
+        <span style="background: var(--accent-orange); color: #fff; font-size: 0.82rem; padding: 3px 10px; border-radius: 20px; font-weight: bold;">加緊製作中</span>
+      </div>
+      <div style="font-size: 0.92rem; color: var(--text-main); line-height: 1.6;">
+        首批實體公仔現正加緊製作中，<strong>現場暫不提供實體兌換</strong>！完成連線之旅客請點此填寫「<a href="https://forms.gle/y4TRrSWSR97Vpb3X6" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;">官方線上郵寄表單</a>」。
+      </div>
+    </div>
     <!-- 即時庫存監控看版 -->
-    <div class="stock-board">
+    <div class="stock-board" style="display: none;">
       <div class="stock-header">
         <div class="stock-title"><span class="live-dot"></span> 禮贈品剩餘庫存（即時更新）</div>
         <div class="stock-update-time" id="lastUpdated">即時連線中...</div>
       </div>
-      <div class="stock-grid">
+      <div class="stock-grid" style="display: none;">
         <div class="stock-card">
           <div class="stock-item-name">朝聖限量盲盒公仔</div>
           <div class="stock-val" id="stock-blindbox">載入中...</div>
           <div class="stock-desc">總發行量 1,600 盒</div>
         </div>
-        <div class="stock-card">
+        <div class="stock-card" style="display: none;">
           <div class="stock-item-name">島嶼彩蛋限量御守</div>
           <div class="stock-val" id="stock-omamori">載入中...</div>
           <div class="stock-desc">總發行量 500 份</div>
