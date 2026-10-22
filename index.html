@@ -422,30 +422,19 @@
   </div>
 
   <div class="container">
-
-    <!-- 【目前模式】：公仔製作中，提示線上表單 -->
-    <div style="background: #fff8eb; border: 1.5px solid var(--accent-orange); border-radius: 12px; padding: 18px 20px; margin-bottom: 24px; box-shadow: var(--shadow);">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-        <div style="font-size: 1.1rem; font-weight: bold; color: var(--text-main);">🎁 媽祖盲盒公仔 (全套4款)</div>
-        <span style="background: var(--accent-orange); color: #fff; font-size: 0.82rem; padding: 3px 10px; border-radius: 20px; font-weight: bold;">免費配送</span>
-      </div>
-      <div style="font-size: 0.92rem; color: var(--text-main); line-height: 1.6;">
-        首批公仔尚無現貨，<strong>現場暫不提供實體兌換</strong>！完成連線之旅客請點此填寫「<a href="https://forms.gle/y4TRrSWSR97Vpb3X6" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;">官方線上郵寄表單</a>」。
-      </div>
-    </div>
     <!-- 即時庫存監控看版 -->
-    <div class="stock-board" style="display: none;">
+    <div class="stock-board" >
       <div class="stock-header">
         <div class="stock-title"><span class="live-dot"></span> 禮贈品剩餘庫存（即時更新）</div>
         <div class="stock-update-time" id="lastUpdated">即時連線中...</div>
       </div>
-      <div class="stock-grid" style="display: none;">
+      <div class="stock-grid" >
         <div class="stock-card">
           <div class="stock-item-name">朝聖限量盲盒公仔</div>
           <div class="stock-val" id="stock-blindbox">載入中...</div>
           <div class="stock-desc">總發行量 1,600 盒</div>
         </div>
-        <div class="stock-card" style="display: none;">
+        <div class="stock-card" ">
           <div class="stock-item-name">島嶼彩蛋限量御守</div>
           <div class="stock-val" id="stock-omamori">載入中...</div>
           <div class="stock-desc">總發行量 500 份</div>
@@ -496,10 +485,7 @@
             <td><strong>2026.10.15-2026.11.30</strong></td>
             <td><strong>馬祖朝聖護照</strong></td>
             <td>9間天后宮、福澳碼頭旅運大樓服務台</td>
-            <td>
-              <span style="color: var(--accent-orange); font-weight: bold;">全面採線上申請</span><br>
-              （請填寫 <a href="https://forms.gle/y4TRrSWSR97Vpb3X6" target="_blank" style="color: var(--primary); text-decoration: underline; font-weight: bold;">線上郵寄表單</a> **免費寄送）
-            </td>
+            <td>福澳碼頭旅運大樓服務台</td>
             <td>媽祖盲盒公仔（上限4盒）</td>
           </tr>
           <tr>
@@ -682,6 +668,15 @@
     <div class="tab-content">
       <div class="card">
         <h2>🕊️ 海風同行日（現場限定任務）</h2>
+        <!-- 颱風天氣候暫停公告 -->
+        <div style="background: #fff1f0; border: 1.5px solid #ffa39e; border-left: 5px solid var(--accent-red); border-radius: 8px; padding: 12px 16px; margin: 12px 0 18px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: bold; color: var(--accent-red); font-size: 0.95rem; margin-bottom: 4px;">
+            ⚠️ 颱風天候影響・步道任務暫停公告
+          </div>
+          <div style="font-size: 0.88rem; color: #5c2223; line-height: 1.6;">
+            受颱風外圍環流天候影響，為顧及旅客安全，<strong>三媽步道現場裝置拍照任務即日起暫停開放</strong>。待風雨過後確認步道安全無虞將重新開放，最新復辦消息請密切留意現場公告，請旅客切勿強行前往步道以策安全！
+          </div>
+        </div>
         <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">現場專屬趣味任務，歡迎前往三媽步道走訪體驗！</p>
         
         <!-- 任務一：媽祖廟定位挑戰（已隨昇天祭結束） -->
