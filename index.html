@@ -477,4 +477,718 @@
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 6px
+      margin-bottom: 6px;
+    }
+    .store-tags-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .store-badge {
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .store-badge.type-hotel {
+      background: #e6f4f8;
+      color: #027a9e;
+    }
+    .store-badge.type-food {
+      background: #fff2e6;
+      color: #e06c00;
+    }
+    .store-badge.island-tag {
+      background: #eef3f6;
+      color: #5e737e;
+    }
+    .stores-count-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+    .faq-question:hover { background: #fafcfd; }
+    .faq-question::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+    .faq-item.open .faq-question::after { content: "−"; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #fbfdfe;
+      padding: 0 20px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      border-top: 1px solid #eef3f6;
+    }
+    .faq-item.open .faq-answer { padding: 16px 20px; max-height: 250px; }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.82rem;
+      color: #92a4ad;
+      padding: 0 16px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部主視覺 Banner -->
+  <div class="hero-banner">
+    <img src="banner.png" alt="下一站天后！跟著媽祖遊馬祖 主視覺">
+  </div>
+
+  <div class="intro-section">
+    <div class="badge">台灣觀光100亮點系列活動</div>
+    <h1>跟著媽祖的腳步，走進馬祖的島嶼與故事</h1>
+    <p>走訪四鄉五島宮廟連線、完成地方風土體驗，限量媽祖盲盒公仔、限定御守與特色保溫瓶等你帶回家！</p>
+  </div>
+
+  <div class="container">
+    <!-- 即時庫存監控看版 -->
+    <div class="stock-board">
+      <div class="stock-header">
+        <div class="stock-title"><span class="live-dot"></span> 禮贈品剩餘庫存（即時更新）</div>
+        <div class="stock-update-time" id="lastUpdated">即時連線中...</div>
+      </div>
+      <div class="stock-grid">
+        <div class="stock-card">
+          <div class="stock-item-name">朝聖公仔</div>
+          <div class="stock-val" id="stock-blindbox">載入中...</div>
+          <div class="stock-desc">總發行量 1,600 盒</div>
+        </div>
+        <div class="stock-card">
+          <div class="stock-item-name">島嶼彩蛋限量御守</div>
+          <div class="stock-val" id="stock-omamori">載入中...</div>
+          <div class="stock-desc">總發行量 500 份</div>
+        </div>
+        <!-- 地方共響特色保溫瓶（若要隱藏可加 style="display: none;"） -->
+        <div class="stock-card" style="display: none;">
+          <div class="stock-item-name">地方共響特色保溫瓶</div>
+          <div class="stock-val" id="stock-souvenir">載入中...</div>
+          <div class="stock-desc">總發行量 750 個</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 即時航班與交通資訊快捷列 -->
+    <div class="traffic-links">
+      <h3>✈️ 馬祖即時航班與船班動態（抵離交通查詢）</h3>
+      <div class="btn-group">
+        <a href="https://www.matsuebus.tw/" target="_blank" class="btn-traffic">🌐 馬祖公車即時交通</a>
+        <a href="https://msa.gov.tw/=" target="_blank" class="btn-traffic">✈️ 馬祖航班動態</a>
+        <a href="https://www.matsuebs.com/" target="_blank" class="btn-traffic">🚢 馬祖船班資訊</a>
+        <a href="https://client.matsu.idv.tw/North-South/" target="_blank" class="btn-traffic">🚢 島際交通資訊</a>
+      </div>
+    </div>
+
+    <!-- 兌換資格重要提示 -->
+    <div class="callout-box">
+      <div class="callout-title">⚠️ 兌換前必看：資格與查驗規範</div>
+      <ul>
+        <li><strong>兌換資格：</strong>僅限「<strong>非設籍連江縣之旅客</strong>」（連江縣在地服役軍人不具禮品兌換資格）。</li>
+        <li><strong>現場查證：</strong>兌獎時請本人出示「<strong>身分證明文件（含戶籍地）</strong>」及「<strong>抵達馬祖之機票/船票交通憑證</strong>」（僅現場核對，不留存影本）。</li>
+        <li><strong>獨立核銷：</strong>朝聖護照、三印彩蛋、島嶼共響集章各為獨立活動，印章不得互相折抵或合併計算。</li>
+      </ul>
+    </div>
+
+    <!-- 摘要對照表 -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width: 120px;">活動期間</th>
+            <th>活動名稱</th>
+            <th>領卡／護照處</th>
+            <th>禮品兌換地點</th>
+            <th>限量好禮</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>2026.10.15-2026.11.30</strong></td>
+            <td><strong>馬祖朝聖護照</strong></td>
+            <td>9間天后宮、福澳碼頭旅運大樓服務台</td>
+            <td>福澳碼頭旅運大樓服務台</td>
+            <td>媽祖盲盒公仔（上限4盒）</td>
+          </tr>
+          <tr>
+            <td><strong>2026.10.15-2026.11.30</strong></td>
+            <td><strong>島嶼彩蛋三印成行</strong></td>
+            <td>《馬祖朝聖護照》內頁</td>
+            <td>福澳碼頭旅運大樓服務台</td>
+            <td>限量御守</td>
+          </tr>
+          <!-- 原活動：昇天祭限定（已結束） -->
+          <tr style="opacity: 0.6; background-color: #fbfbfb;">
+            <td><strong>2026.10.17-2026.10.18</strong></td>
+            <td>
+              <span style="background: #8c9ba5; color: #fff; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; margin-right: 4px; font-weight: bold;">已結束</span>
+              <strong>海風同行日（昇天祭限定）</strong>
+            </td>
+            <td>現場活動服務台</td>
+            <td>現場活動服務台</td>
+            <td>無敵星星貼紙（已兌畢）</td>
+          </tr>
+          <tr>
+            <td><strong>2026.10.17-換完為止</strong></td>
+            <td><strong>海風同行日（三媽步道）</strong></td>
+            <td>三媽步道尋鷗霸裝置</td>
+            <td>福澳碼頭旅運大樓服務台</td>
+            <td>實用飲料提袋</td>
+          </tr>
+          <!-- 島嶼共響活動欄位（已隱藏） -->
+          <tr style="display: none;">
+            <td><strong>2026.11.16-2026.12.20</strong></td>
+            <td><strong>島嶼共響地方任務</strong></td>
+            <td>南竿機場、北竿機場、福澳碼頭、東引候船室</td>
+            <td>福澳碼頭旅運大樓服務台</td>
+            <td>下一站天后不鏽鋼保溫瓶（限量750份）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 標籤導覽列 -->
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab(0)">馬祖朝聖護照</button>
+      <button class="tab-btn" onclick="switchTab(1)">三印成行彩蛋</button>
+      <button class="tab-btn" onclick="switchTab(2)">海風同行日</button>
+      <!-- 島嶼共響分頁按鈕（已隱藏） -->
+      <button class="tab-btn" onclick="switchTab(3)" style="display: none;">島嶼共響(食衣宿遊行)</button>
+    </div>
+
+    <!-- TAB 1: 朝聖之旅 (索引 0) -->
+    <div class="tab-content active">
+      <div class="card">
+        <h2>⛩️ 馬祖朝聖護照（九宮格連線）</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">走訪馬祖各島 9 座天后宮，完成連線即可領取限量盲盒（每人上限4盒，全活動限量1,600份，兌完為止），團客參加比照散客辦理。</p>
+        
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>領取專屬護照</h4>
+            <p style="margin-bottom: 8px;">於指定 9 間宮廟或福澳碼頭旅運大樓服務台免費索取《馬祖朝聖護照》（每人限領一本）：</p>
+            <div style="background: #edf5f8; padding: 10px 14px; border-radius: 8px; font-size: 0.86rem; line-height: 1.7; color: var(--text-main);">
+              <div>📍 <strong>南竿</strong>｜馬祖境天后宮（馬港）、金板境天后宮、津沙境天后宮、福澳碼頭旅運大樓服務台</div>
+              <div>📍 <strong>北竿</strong>｜芹壁境天后宮、坂里境天后宮</div>
+              <div>📍 <strong>西莒</strong>｜青帆境天后宮、田澳境天后宮</div>
+              <div>📍 <strong>東莒</strong>｜福正境天上聖母廟</div>
+              <div>📍 <strong>東引</strong>｜東引天后宮</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>走訪宮廟集印</h4>
+            <p>在各廟宇參拜並於各宮專屬頁面蓋章。連線包含橫線3條、直線3條、對角線2條，共8條可能路線。</p>
+            <div class="grid-preview">
+              <div class="grid-cell">01 津沙<br>(南竿)</div>
+              <div class="grid-cell">02 芹壁<br>(北竿)</div>
+              <div class="grid-cell">03 坂里<br>(北竿)</div>
+              <div class="grid-cell">04 金板<br>(南竿)</div>
+              <div class="grid-cell">05 馬港<br>(南竿)</div>
+              <div class="grid-cell">06 青帆<br>(西莒)</div>
+              <div class="grid-cell">07 福正<br>(東莒)</div>
+              <div class="grid-cell">08 田澳<br>(西莒)</div>
+              <div class="grid-cell">09 東引<br>(東引)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>兌換盲盒公仔</h4>
+            <p>• 完成 1 條線：領 1 盒<br>• 完成 2 條線：累計領 2 盒<br>• 完成 3 條線以上：累計領 3 盒<br>• 九宮全滿：累計領滿 4 盒（最高上限）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: 彩蛋三印 (索引 1) -->
+    <div class="tab-content">
+      <div class="card">
+        <h2>🥚 島嶼彩蛋・三印成行</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">使用《馬祖朝聖護照》彩蛋頁，完成三項不同任務各集1印，兌換限量限定御守（共500份）。</p>
+        
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>第一印｜天后連線印</h4>
+            <p>完成朝聖護照九宮格中任一條有效連線，即可請工作人員加蓋彩蛋天后連線印。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>第二印｜海陸交通印</h4>
+            <p>搭乘馬祖境內「島際交通船」或「台灣好行」觀光公車路線，憑搭乘憑證核章（台灣-馬祖往返交通不計入）。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>第三印｜風土體驗印</h4>
+            <p>前往指定文化場館（如北竿戰爭和平紀念公園主題館、南竿戰地文化博物館、東引水下博物館、東莒島燈塔展示館等）完成合照，上傳至「馬祖卡蹓趣」FB粉專指定貼文並加註標籤 <code>#島嶼彩蛋三印成行</code>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: 海風同行日 (索引 2) -->
+    <div class="tab-content">
+      <div class="card">
+        <h2>🕊️ 海風同行日（現場限定任務）</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">現場專屬趣味任務，歡迎前往三媽步道走訪體驗！</p>
+        
+        <!-- 任務一：媽祖廟定位挑戰（已隨昇天祭結束） -->
+        <div class="step-item" style="opacity: 0.65;">
+          <div class="step-num" style="background: #adb5bd;">★</div>
+          <div class="step-body">
+            <h4>
+              媽祖廟定位挑戰
+              <span style="background: #6c757d; color: #fff; font-size: 0.75rem; padding: 2px 7px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle;">昇天祭限定・已圓滿結束</span>
+            </h4>
+            <p style="color: #6c757d;">（本活動已隨昇天祭落幕截止，無敵星星貼紙已全數兌畢）</p>
+          </div>
+        </div>
+
+        <!-- 任務二：三媽步道尋鷗霸（持續進行中） -->
+        <div class="step-item">
+          <div class="step-num">★</div>
+          <div class="step-body">
+            <h4>
+              三媽步道尋鷗霸
+              <span style="background: var(--accent-orange); color: #fff; font-size: 0.75rem; padding: 2px 7px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle;">進行中</span>
+            </h4>
+            <p>走訪步道找到編號 1 至 3 號鷗霸裝置並合照任務卡，即可兌換實用飲料提袋一份。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- TAB 4: 島嶼共響 (索引 3，已隱藏) -->
+    <div class="tab-content" style="display: none !important;">
+      <div class="card">
+        <h2>🌊 島嶼共響・旅行集章任務（2026.11.16 - 12.20）</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">
+          把馬祖玩進生活裡！深入島嶼日常，完成「食、衣、宿、遊、行」5 項旅行任務中任 4 類不同印章，即可兌換限量「<strong>下一站天后不鏽鋼保溫瓶</strong>」（300mL，限量 750 份，兌完為止）。
+        </p>
+
+        <!-- 領卡據點 -->
+        <div style="background: #edf5f8; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px;">
+          📍 <strong>專屬集章卡免費索取地點（每人限領一張，附流水編號）：</strong><br>
+          • <strong>南竿</strong>：南竿機場服務台、福澳碼頭旅運大樓服務台<br>
+          • <strong>北竿</strong>：北竿機場服務台<br>
+          • <strong>東引</strong>：東引候船室服務台
+        </div>
+        
+        <div class="step-item">
+          <div class="step-num">食</div>
+          <div class="step-body">
+            <h4>嚐一口馬祖（合作店家消費）</h4>
+            <p>至活動合作之餐飲、伴手禮、咖啡特產店消費（不限最低消費金額），憑消費發票、收據或免用統一發票收據於服務台查驗核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">衣</div>
+          <div class="step-body">
+            <h4>穿上馬祖（特色服飾配件）</h4>
+            <p>穿戴具有馬祖地名、在地品牌或馬祖文化識別圖案之服飾、帽子或配件，由服務台工作人員現場查驗確認本人穿著後核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">宿</div>
+          <div class="step-body">
+            <h4>住一晚馬祖（入住合法旅宿）</h4>
+            <p>實際入住合作之合法旅宿，憑住宿發票、收據或入住憑單至服務台查驗核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">遊</div>
+          <div class="step-body">
+            <h4>搭好行遊馬祖（觀光遊程體驗）</h4>
+            <p>搭乘馬祖「台灣好行」指定觀光公車路線，或完成指定遊程及觀光體驗，持乘車或票券憑證核章。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">行</div>
+          <div class="step-body">
+            <h4>搭一程馬祖（島際跳島乘船）</h4>
+            <p>搭乘馬祖各島之間的「島際交通船」（如南竿-北竿、南竿-莒光、南竿-東引等），憑實體或電子乘船憑證核章（台灣-馬祖往返之大交通不計入）。</p>
+          </div>
+        </div>
+
+        <!-- 兌換方式說明區 -->
+        <div style="border-top: 1px dashed #c9dfe8; padding-top: 16px; margin-top: 20px;">
+          <h4 style="color: var(--primary-dark); font-size: 0.98rem; margin-bottom: 8px;">🎁 兌換管道說明</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;">
+            • <strong>現場兌換</strong>：集滿 4 類印章後，由本人攜帶集章卡、身分證件與交通憑證至「<strong>福澳碼頭旅運大樓服務台</strong>」辦理查驗領取。<br>
+            • <strong>線上申請宅配</strong>：若由北竿或東引直接搭機返台、未經福澳碼頭者，可利用「<a href="https://forms.gle/UDMeHSBiiHEL9v4t7" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;">島嶼共響線上兌換表單</a>」拍照上傳集章卡與證明，經專案小組審核通過後寄送至指定地址。
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ========================================================
+         【合作特約店家專區（純民眾瀏覽版，同步 Google 試算表，已隱藏）】
+         ======================================================== -->
+    <div class="partners-section" style="display: none;">
+      <div class="card" style="margin-bottom: 0;">
+        <div class="partners-header-bar">
+          <div class="partners-title-group">
+            <h2>🏪 「島嶼共響」活動合作特約店家</h2>
+            <div class="partners-subtitle">走訪在地合法旅宿、特色餐廳、咖啡廳與伴手禮名店（支援島嶼共響任務）</div>
+          </div>
+        </div>
+
+        <!-- 島嶼切換分頁 -->
+        <div class="island-filter-row">
+          <button class="island-btn active" onclick="setIslandFilter('all', this)">全部島嶼</button>
+          <button class="island-btn" onclick="setIslandFilter('南竿', this)">南竿鄉</button>
+          <button class="island-btn" onclick="setIslandFilter('北竿', this)">北竿鄉</button>
+          <button class="island-btn" onclick="setIslandFilter('莒光', this)">莒光鄉</button>
+          <button class="island-btn" onclick="setIslandFilter('東引', this)">東引鄉</button>
+        </div>
+
+        <!-- 搜尋與類別篩選 -->
+        <div class="filter-controls-row">
+          <div class="search-box-wrap">
+            <span class="search-icon-svg">🔍</span>
+            <input type="text" id="storeSearchInput" class="search-input" placeholder="搜尋店家名稱、地名..." oninput="handleSearch(this.value)">
+          </div>
+          <div class="type-select-wrap">
+            <select id="storeTypeSelect" onchange="handleTypeChange(this.value)">
+              <option value="all">所有類別</option>
+              <option value="旅宿及大型遊憩業者">🏠 旅宿及大型遊憩</option>
+              <option value="餐飲、特色商家及遊憩服務">☕ 餐飲、咖啡與特色商家</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 店家數量統計 -->
+        <div class="stores-count-info" id="storesCountInfo">載入特約店家名單中...</div>
+
+        <!-- 店家卡片網格 -->
+        <div class="store-grid-container" id="storesGrid"></div>
+      </div>
+    </div>
+
+    <!-- FAQ 常見問答 -->
+    <h3 style="margin: 28px 0 14px; font-size: 1.2rem; color: var(--primary);">💬 常見問題 FAQ</h3>
+
+    <div class="faq-item">
+      <div class="faq-question">如果我從北竿或東引直接搭機返台，來不及去福澳港換禮品怎麼辦？</div>
+      <div class="faq-answer">
+        《馬祖朝聖護照》及《島嶼共響》均設有官方線上寄送表單機制！只要拍照上傳已集滿之護照/集章卡、身分資料及抵達馬祖交通證明，審核通過後即由專案為您免費宅配到家。</div>
+      </div>
+
+    <div class="faq-item">
+      <div class="faq-question">連江縣居民或在地服役國軍可以換禮品嗎？</div>
+      <div class="faq-answer">
+        歡迎所有人參與各景點踩點與集章體驗；但為帶動外地觀光效益，實體禮品（公仔、御守、保溫瓶）之兌換對象僅限「非設籍連江縣之旅客」，在地國軍亦受限戶籍規範。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">台灣本島到馬祖的機票／船票可以拿來蓋「行章」嗎？</div>
+      <div class="faq-answer">
+        不行喔！交通類印章（包含地方旅遊的行章與彩蛋的海陸交通印）僅認列「馬祖各島之間的島際交通船」或「台灣好行觀光公車」，往返台灣與馬祖之交通不計入任務。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">集章卡如果不小心遺失了可以補蓋嗎？</div>
+      <div class="faq-answer">
+        若旅客能出示確切之乘船票根、發票收據等紀錄，工作人員可協助重新認證補蓋，但每人領獎皆有嚴格實名核銷登錄，已領過之禮品無法再次領取。
+      </div>
+    </div>
+
+    <footer>
+      指導單位：交通部觀光署 ｜ 主辦單位：連江縣政府 ｜ 承辦單位：連江縣交通旅遊局<br>
+      執行單位：和泰汽車股份有限公司<br>
+      © 2026 下一站天后！跟著媽祖遊馬祖 All Rights Reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    // Tab 切換
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+      tabs.forEach((tab, i) => {
+        if(i === index) {
+          tab.classList.add('active');
+          contents[i].classList.add('active');
+        } else {
+          tab.classList.remove('active');
+          contents[i].classList.remove('active');
+        }
+      });
+    }
+
+    // FAQ 摺疊
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    /* ========================================================
+       【即時庫存串接設定】
+       ======================================================== */
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEHeF9FVhzJM5m24-35YvgTFbZHmxs8Mq2tOtYO_wFbW7-ACbP-wFg3H0dRwXKYRDFYD_tEgNobyhN/pub?output=csv";
+
+    const fallbackStock = {
+      blindbox: "1,280",
+      omamori: "410",
+      souvenir: "750"
+    };
+
+    async function loadStock() {
+      const timeElem = document.getElementById("lastUpdated");
+      const elBlind = document.getElementById("stock-blindbox");
+      const elOmamori = document.getElementById("stock-omamori");
+      const elSouvenir = document.getElementById("stock-souvenir");
+
+      if (!SHEET_CSV_URL) {
+        elBlind.innerText = fallbackStock.blindbox;
+        elOmamori.innerText = fallbackStock.omamori;
+        elSouvenir.innerText = fallbackStock.souvenir;
+        timeElem.innerText = "最後更新：" + new Date().toLocaleDateString();
+        return;
+      }
+
+      try {
+        const res = await fetch(SHEET_CSV_URL);
+        const text = await res.text();
+        const rows = text.split("\n").map(r => r.split(","));
+        
+        if(rows[1]) elBlind.innerText = rows[1][1].trim();
+        if(rows[2]) elOmamori.innerText = rows[2][1].trim();
+        if(rows[3]) elSouvenir.innerText = rows[3][1].trim();
+        
+        const now = new Date();
+        timeElem.innerText = `最後更新：${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+      } catch (err) {
+        elBlind.innerText = fallbackStock.blindbox;
+        elOmamori.innerText = fallbackStock.omamori;
+        elSouvenir.innerText = fallbackStock.souvenir;
+        timeElem.innerText = "資料連線中";
+      }
+    }
+
+    loadStock();
+
+    /* ========================================================
+       【合作特約店家：試算表串接與篩選渲染】
+       ======================================================== */
+    const STORES_CSV_URL = ""; 
+
+    const FALLBACK_STORES = [
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "多麗民宿" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "隴之悅驛宿館" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "清水灣客棧" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "清水灣客棧一館" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "清水灣客棧二館" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "沐光B&B" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "沐光民宿" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "沐光二館" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "依金那民宿" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "幸福藍眼淚會館" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "珠螺灣會館" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "璞宿商旅" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "小島人家" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "牛角一邊厝" },
+      { island: "南竿", type: "旅宿及大型遊憩業者", name: "向陽民宿" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "中南伍捌商行" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "中南58手作·輕·飲·食" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "馬祖小客車股份有限公司" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "兵兵友禮百貨行" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "馬祖農漁特產中心" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "和田屋麵館" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "流夏咖啡" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "久福脆皮甜甜圈" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "萬家香" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "小柒咖啡" },
+      { island: "南竿", type: "餐飲、特色商家及遊憩服務", name: "超群繼光餅" },
+
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁村25號民宿" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁村25號之老村長的漁寮" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁村25號之老村長的漁寮分館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "星漾海景民宿" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "家適咖啡.民宿" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "家適咖啡.民宿2館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "家適咖啡.民宿3館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁愛情海" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁愛情海2館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁愛情海3館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁山莊" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁榕樹下民宿" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "木喜海景民宿" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "龍福山莊" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁老時光" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁老時光2館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁休閒渡假村" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁休閒渡假村二館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁休閒度假村三館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "芹壁休閒度假村五館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "小玖窩民宿" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "小玖窩民宿二館" },
+      { island: "北竿", type: "旅宿及大型遊憩業者", name: "大宅三院青年旅舍" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "品皇工作坊（北海天晴）" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "雲記地瓜餃" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "大丘公主行" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "馬祖海滋味" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "飲就飲串串燒烤BAR" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "邂謝麵" },
+      { island: "北竿", type: "餐飲、特色商家及遊憩服務", name: "愛情海" },
+
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "鴻景山莊民宿" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "鴻景山莊一館" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "船老大民宿" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "船老大民宿一館" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "船老大民宿貳館" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "船老大民宿參館" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "東莒幸福居民宿" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "東莒幸福居民宿2館" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "山海一家" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "友誼山莊民宿" },
+      { island: "莒光", type: "旅宿及大型遊憩業者", name: "找茶複合式民宿" },
+      { island: "莒光", type: "餐飲、特色商家及遊憩服務", name: "莒光鄉找茶複合式民宿" },
+      { island: "莒光", type: "餐飲、特色商家及遊憩服務", name: "珍珍食品店（山海一家）" },
+      { island: "莒光", type: "餐飲、特色商家及遊憩服務", name: "珍珍食品店" },
+      { island: "莒光", type: "餐飲、特色商家及遊憩服務", name: "找茶drinkbar" },
+
+      { island: "東引", type: "旅宿及大型遊憩業者", name: "安逸旅店" },
+      { island: "東引", type: "旅宿及大型遊憩業者", name: "東引海角民宿一館" },
+      { island: "東引", type: "旅宿及大型遊憩業者", name: "東引海角民宿二館" },
+      { island: "東引", type: "旅宿及大型遊憩業者", name: "安逸海景旅店" },
+      { island: "東引", type: "旅宿及大型遊憩業者", name: "小島上" },
+      { island: "東引", type: "旅宿及大型遊憩業者", name: "小島上二館" },
+      { island: "東引", type: "餐飲、特色商家及遊憩服務", name: "邂謝麵" },
+      { island: "東引", type: "餐飲、特色商家及遊憩服務", name: "長堤咖啡屋-荇菜廚房" }
+    ];
+
+    let currentStores = [];
+    let currentIsland = 'all';
+    let currentType = 'all';
+    let searchQuery = '';
+
+    async function loadStoresData() {
+      if (!STORES_CSV_URL) {
+        currentStores = [...FALLBACK_STORES];
+        renderStores();
+        return;
+      }
+
+      try {
+        const res = await fetch(STORES_CSV_URL);
+        const text = await res.text();
+        const rows = text.split("\n").map(r => r.split(",")).filter(r => r.length >= 3);
+        
+        const list = [];
+        for (let i = 1; i < rows.length; i++) {
+          const island = rows[i][0] ? rows[i][0].trim() : '';
+          const type = rows[i][1] ? rows[i][1].trim() : '';
+          const name = rows[i][2] ? rows[i][2].trim() : '';
+          if (name) {
+            list.push({ island, type, name });
+          }
+        }
+        currentStores = list.length > 0 ? list : [...FALLBACK_STORES];
+      } catch (err) {
+        currentStores = [...FALLBACK_STORES];
+      }
+      renderStores();
+    }
+
+    function setIslandFilter(island, btnElem) {
+      currentIsland = island;
+      document.querySelectorAll('.island-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElem) btnElem.classList.add('active');
+      renderStores();
+    }
+
+    function handleTypeChange(val) {
+      currentType = val;
+      renderStores();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      renderStores();
+    }
+
+    function renderStores() {
+      const grid = document.getElementById('storesGrid');
+      const countInfo = document.getElementById('storesCountInfo');
+      if (!grid) return;
+
+      const filtered = currentStores.filter(store => {
+        const matchIsland = currentIsland === 'all' || store.island === currentIsland;
+        const matchType = currentType === 'all' || store.type.includes(currentType) || (currentType.includes('旅宿') && store.type.includes('旅宿'));
+        const matchQuery = !searchQuery || store.name.toLowerCase().includes(searchQuery) || store.island.includes(searchQuery);
+        return matchIsland && matchType && matchQuery;
+      });
+
+      countInfo.innerText = `顯示共 ${filtered.length} 家特約店家`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 28px; color: var(--text-muted); font-size: 0.9rem;">查無符合條件的店家</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(store => {
+        const isHotel = store.type.includes('旅宿');
+        return `
+          <div class="store-card">
+            <div class="store-name-text">${store.name}</div>
+            <div class="store-tags-bar">
+              <span class="store-badge island-tag">📍 ${store.island}</span>
+              <span class="store-badge ${isHotel ? 'type-hotel' : 'type-food'}">${isHotel ? '🏠 旅宿遊憩' : '☕ 餐飲特產'}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    loadStoresData();
+  </script>
+</body>
+</html>
