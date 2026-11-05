@@ -642,14 +642,6 @@
             <td>福澳碼頭旅運大樓服務台</td>
             <td>限量御守</td>
           </tr>
-          <!-- 島嶼共響活動欄位已啟用 -->
-          <tr style="background-color: #f0f9fc;">
-            <td><strong>2026.11.16-2026.12.20</strong></td>
-            <td><strong>島嶼共響地方任務</strong></td>
-            <td>南竿機場、北竿機場、福澳碼頭、東引候船室</td>
-            <td>福澳碼頭旅運大樓服務台</td>
-            <td>下一站天后不鏽鋼保溫瓶（限量750份）</td>
-          </tr>
           <!-- 原活動：昇天祭限定（已結束） -->
           <tr style="opacity: 0.6; background-color: #fbfbfb;">
             <td><strong>2026.10.17-2026.10.18</strong></td>
@@ -667,6 +659,14 @@
             <td>三媽步道尋鷗霸裝置</td>
             <td>福澳碼頭旅運大樓服務台</td>
             <td>實用飲料提袋</td>
+             <!-- 島嶼共響活動欄位已隱藏 -->
+          <tr style="display: none;>
+            <td><strong>2026.11.16-2026.12.20</strong></td>
+            <td><strong>島嶼共響</strong></td>
+            <td>南竿機場、北竿機場、福澳碼頭、東引候船室</td>
+            <td>福澳碼頭旅運大樓服務台</td>
+            <td>下一站天后不鏽鋼保溫瓶（限量750份）</td>
+          </tr>
           </tr>
         </tbody>
       </table>
@@ -676,8 +676,8 @@
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab(0)">馬祖朝聖護照</button>
       <button class="tab-btn" onclick="switchTab(1)">三印成行彩蛋</button>
-      <button class="tab-btn" onclick="switchTab(2)">島嶼共響(食衣宿遊行)</button>
       <button class="tab-btn" onclick="switchTab(3)">海風同行日</button>
+      <button class="tab-btn" onclick="switchTab(2)">島嶼共響(食衣宿遊行)</button>
     </div>
 
     <!-- TAB 1: 朝聖之旅 -->
@@ -762,8 +762,40 @@
       </div>
     </div>
 
-    <!-- TAB 3: 島嶼共響（依計畫完整更新） -->
+    <!-- TAB 3: 海風同行日 -->
     <div class="tab-content">
+      <div class="card">
+        <h2>🕊️ 海風同行日（現場限定任務）</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">現場專屬趣味任務，歡迎前往三媽步道走訪體驗！</p>
+        
+        <!-- 任務一：媽祖廟定位挑戰（已隨昇天祭結束） -->
+        <div class="step-item" style="opacity: 0.65;">
+          <div class="step-num" style="background: #adb5bd;">★</div>
+          <div class="step-body">
+            <h4>
+              媽祖廟定位挑戰
+              <span style="background: #6c757d; color: #fff; font-size: 0.75rem; padding: 2px 7px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle;">昇天祭限定・已圓滿結束</span>
+            </h4>
+            <p style="color: #6c757d;">（本活動已隨昇天祭落幕截止，無敵星星貼紙已全數兌畢）</p>
+          </div>
+        </div>
+
+        <!-- 任務二：三媽步道尋鷗霸（持續進行中） -->
+        <div class="step-item">
+          <div class="step-num">★</div>
+          <div class="step-body">
+            <h4>
+              三媽步道尋鷗霸
+              <span style="background: var(--accent-orange); color: #fff; font-size: 0.75rem; padding: 2px 7px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle;">進行中</span>
+            </h4>
+            <p>走訪步道找到編號 1 至 3 號鷗霸裝置並合照任務卡，即可兌換實用飲料提袋一份。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<!-- TAB 4: 島嶼共響（隱藏） -->
+    <div class="tab-content" style="display: none;>
       <div class="card">
         <h2>🌊 島嶼共響・旅行集章任務（2026.11.16 - 12.20）</h2>
         <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">
@@ -828,43 +860,11 @@
         </div>
       </div>
     </div>
-
-    <!-- TAB 4: 海風同行日 -->
-    <div class="tab-content">
-      <div class="card">
-        <h2>🕊️ 海風同行日（現場限定任務）</h2>
-        <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;">現場專屬趣味任務，歡迎前往三媽步道走訪體驗！</p>
-        
-        <!-- 任務一：媽祖廟定位挑戰（已隨昇天祭結束） -->
-        <div class="step-item" style="opacity: 0.65;">
-          <div class="step-num" style="background: #adb5bd;">★</div>
-          <div class="step-body">
-            <h4>
-              媽祖廟定位挑戰
-              <span style="background: #6c757d; color: #fff; font-size: 0.75rem; padding: 2px 7px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle;">昇天祭限定・已圓滿結束</span>
-            </h4>
-            <p style="color: #6c757d;">（本活動已隨昇天祭落幕截止，無敵星星貼紙已全數兌畢）</p>
-          </div>
-        </div>
-
-        <!-- 任務二：三媽步道尋鷗霸（持續進行中） -->
-        <div class="step-item">
-          <div class="step-num">★</div>
-          <div class="step-body">
-            <h4>
-              三媽步道尋鷗霸
-              <span style="background: var(--accent-orange); color: #fff; font-size: 0.75rem; padding: 2px 7px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle;">進行中</span>
-            </h4>
-            <p>走訪步道找到編號 1 至 3 號鷗霸裝置並合照任務卡，即可兌換實用飲料提袋一份。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
     <!-- ========================================================
-         【合作特約店家專區（純民眾瀏覽版，同步 Google 試算表）】
+         【合作特約店家專區（純民眾瀏覽版，同步 Google 試算表）**隱藏
          ======================================================== -->
-    <div class="partners-section">
+    <div class="partners-section" style="display: none;>
       <div class="card" style="margin-bottom: 0;">
         <div class="partners-header-bar">
           <div class="partners-title-group">
