@@ -398,6 +398,289 @@
     }
     .faq-item.open .faq-answer { padding: 16px 20px; max-height: 250px; }
 
+    /* ========================================================
+       【新整併：合作店家專屬 UI 樣式】
+       ======================================================== */
+    .partners-section {
+      margin: 36px 0 24px;
+    }
+    .partners-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .partners-title-group h2 {
+      font-size: 1.35rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .partners-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .btn-manage-stores {
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: #ffffff;
+      color: var(--primary);
+      border: 1px solid #c4dbe4;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-manage-stores:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .island-filter-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .island-btn {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .island-btn.active {
+      background: var(--primary-dark);
+      color: #fff;
+      border-color: var(--primary-dark);
+      box-shadow: 0 2px 8px rgba(0, 86, 112, 0.25);
+    }
+
+    .filter-controls-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .search-box-wrap {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 10px 14px 10px 36px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      outline: none;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+    .search-icon-svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+      color: #889ba6;
+    }
+    .type-select-wrap select {
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      background: #fff;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .store-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .store-card {
+      background: #ffffff;
+      border: 1px solid #e3edf2;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .store-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(2, 122, 158, 0.08);
+      border-color: #c9dfe8;
+    }
+    .store-name-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .store-tags-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .store-badge {
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .store-badge.type-hotel {
+      background: #e6f4f8;
+      color: #027a9e;
+    }
+    .store-badge.type-food {
+      background: #fff2e6;
+      color: #e06c00;
+    }
+    .store-badge.island-tag {
+      background: #eef3f6;
+      color: #5e737e;
+    }
+    .stores-count-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* 管理 Modal 視窗 */
+    .admin-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .admin-modal-backdrop.open { display: flex; }
+    .admin-modal-card {
+      background: #ffffff;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .admin-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #edf2f5;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .admin-modal-header h3 {
+      font-size: 1.15rem;
+      color: var(--primary-dark);
+    }
+    .admin-btn-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #889ba6;
+    }
+    .admin-form-group {
+      margin-bottom: 12px;
+    }
+    .admin-form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .admin-form-group input, .admin-form-group select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .admin-action-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      border-top: 1px solid #edf2f5;
+      padding-top: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-admin-submit {
+      flex: 1;
+      padding: 10px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-admin-backup {
+      padding: 8px 12px;
+      background: #f1f5f8;
+      border: 1px solid #d8e5ea;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .admin-list-scroll {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #edf2f5;
+      border-radius: 8px;
+      margin-top: 14px;
+      padding: 8px;
+    }
+    .admin-store-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 8px;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #f6f9fb;
+    }
+    .btn-delete-tag {
+      background: #fee2e2;
+      color: #dc2626;
+      border: none;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
     footer {
       text-align: center;
       margin-top: 40px;
@@ -423,18 +706,18 @@
 
   <div class="container">
     <!-- 即時庫存監控看版 -->
-    <div class="stock-board" >
+    <div class="stock-board">
       <div class="stock-header">
         <div class="stock-title"><span class="live-dot"></span> 禮贈品剩餘庫存（即時更新）</div>
         <div class="stock-update-time" id="lastUpdated">即時連線中...</div>
       </div>
-      <div class="stock-grid" >
+      <div class="stock-grid">
         <div class="stock-card">
           <div class="stock-item-name">朝聖公仔</div>
           <div class="stock-val" id="stock-blindbox">載入中...</div>
           <div class="stock-desc">總發行量 1,600 盒</div>
         </div>
-        <div class="stock-card" ">
+        <div class="stock-card">
           <div class="stock-item-name">島嶼彩蛋限量御守</div>
           <div class="stock-val" id="stock-omamori">載入中...</div>
           <div class="stock-desc">總發行量 500 份</div>
@@ -451,7 +734,7 @@
     <div class="traffic-links">
       <h3>✈️ 馬祖即時航班與船班動態（抵離交通查詢）</h3>
       <div class="btn-group">
-       <a href="https://www.matsuebus.tw/" target="_blank" class="btn-traffic">🌐 馬祖公車即時交通</a>
+        <a href="https://www.matsuebus.tw/" target="_blank" class="btn-traffic">🌐 馬祖公車即時交通</a>
         <a href="https://msa.gov.tw/=" target="_blank" class="btn-traffic">✈️ 馬祖航班動態</a>
         <a href="https://www.matsuebs.com/" target="_blank" class="btn-traffic">🚢 馬祖船班資訊</a>
         <a href="https://client.matsu.idv.tw/North-South/" target="_blank" class="btn-traffic">🚢 島際交通資訊</a>
@@ -481,7 +764,7 @@
           </tr>
         </thead>
         <tbody>
-         <tr>
+          <tr>
             <td><strong>2026.10.15-2026.11.30</strong></td>
             <td><strong>馬祖朝聖護照</strong></td>
             <td>9間天后宮、福澳碼頭旅運大樓服務台</td>
@@ -502,7 +785,7 @@
             <td>福澳碼頭旅運大樓服務台</td>
             <td>特色保溫杯</td>
           </tr>
-         <!-- 原活動：昇天祭限定（已結束） -->
+          <!-- 原活動：昇天祭限定（已結束） -->
           <tr style="opacity: 0.6; background-color: #fbfbfb;">
             <td><strong>2026.10.17-2026.10.18</strong></td>
             <td>
@@ -512,14 +795,13 @@
             <td>現場活動服務台</td>
             <td>現場活動服務台</td>
             <td>無敵星星貼紙（已兌畢）</td>
-            </tr>
-               <tr>
+          </tr>
+          <tr>
             <td><strong>2026.10.17-換完為止</strong></td>
             <td><strong>海風同行日（三媽步道）</strong></td>
             <td>三媽步道尋鷗霸裝置</td>
             <td>福澳碼頭旅運大樓服務台</td>
             <td>實用飲料提袋</td>
-            </tr>
           </tr>
         </tbody>
       </table>
@@ -695,6 +977,53 @@
       </div>
     </div>
 
+    <!-- ========================================================
+         【新增整合：馬祖合作特約店家專區】
+         ======================================================== -->
+    <div class="partners-section">
+      <div class="card" style="margin-bottom: 0;">
+        <div class="partners-header-bar">
+          <div class="partners-title-group">
+            <h2>🏪 四鄉五島合作特約店家</h2>
+            <div class="partners-subtitle">走訪在地合法旅宿、特色餐廳、咖啡廳與伴手禮名店</div>
+          </div>
+          <button class="btn-manage-stores" onclick="openAdminModal()">
+            ⚙️ 管理與更新名單
+          </button>
+        </div>
+
+        <!-- 島嶼切換分頁 -->
+        <div class="island-filter-row">
+          <button class="island-btn active" onclick="setIslandFilter('all', this)">全部島嶼</button>
+          <button class="island-btn" onclick="setIslandFilter('南竿', this)">南竿鄉</button>
+          <button class="island-btn" onclick="setIslandFilter('北竿', this)">北竿鄉</button>
+          <button class="island-btn" onclick="setIslandFilter('莒光', this)">莒光鄉</button>
+          <button class="island-btn" onclick="setIslandFilter('東引', this)">東引鄉</button>
+        </div>
+
+        <!-- 搜尋與類別篩選 -->
+        <div class="filter-controls-row">
+          <div class="search-box-wrap">
+            <span class="search-icon-svg">🔍</span>
+            <input type="text" id="storeSearchInput" class="search-input" placeholder="搜尋店家名稱、地名..." oninput="handleSearch(this.value)">
+          </div>
+          <div class="type-select-wrap">
+            <select id="storeTypeSelect" onchange="handleTypeChange(this.value)">
+              <option value="all">所有類別</option>
+              <option value="旅宿及大型遊憩業者">🏠 旅宿及大型遊憩</option>
+              <option value="餐飲、特色商家及遊憩服務">☕ 餐飲、咖啡與特色商家</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 店家數量統計 -->
+        <div class="stores-count-info" id="storesCountInfo">載入中...</div>
+
+        <!-- 店家卡片網格 -->
+        <div class="store-grid-container" id="storesGrid"></div>
+      </div>
+    </div>
+
     <!-- FAQ 常見問答 -->
     <h3 style="margin: 28px 0 14px; font-size: 1.2rem; color: var(--primary);">💬 常見問題 FAQ</h3>
 
@@ -733,82 +1062,18 @@
 
   </div>
 
-  <script>
-    // Tab 切換
-    function switchTab(index) {
-      const tabs = document.querySelectorAll('.tab-btn');
-      const contents = document.querySelectorAll('.tab-content');
-      tabs.forEach((tab, i) => {
-        if(i === index) {
-          tab.classList.add('active');
-          contents[i].classList.add('active');
-        } else {
-          tab.classList.remove('active');
-          contents[i].classList.remove('active');
-        }
-      });
-    }
+  <!-- 後台管理彈窗 (Modal) -->
+  <div class="admin-modal-backdrop" id="adminModal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-header">
+        <h3>🏪 店家名單快速管理</h3>
+        <button class="admin-btn-close" onclick="closeAdminModal()">×</button>
+      </div>
 
-    // FAQ 摺疊
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        item.classList.toggle('open');
-      });
-    });
-
-    /* ========================================================
-       【即時庫存串接設定】
-       日後只要在 Google 試算表修改數字，網頁就會自動同步！
-       1. 建立一個 Google Sheets 試算表，第一欄放品名，第二欄放剩餘數量。
-       2. 點擊「檔案」->「共用」->「發布到網路」-> 選擇「CSV」格式發布。
-       3. 將產生的 CSV 網址貼在下方的 SHEET_CSV_URL 引號中。
-       ======================================================== */
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEHeF9FVhzJM5m24-35YvgTFbZHmxs8Mq2tOtYO_wFbW7-ACbP-wFg3H0dRwXKYRDFYD_tEgNobyhN/pub?output=csv"; // 填入你的 Google Sheets 公開 CSV 網址
-
-    // 預設/備援庫存數據（若尚未串接 Google Sheets 時會先顯示此數值）
-    const fallbackStock = {
-      blindbox: "1,280", // 盲盒剩餘數
-      omamori: "410",    // 御守剩餘數
-      souvenir: "充足"   // 隨行杯狀況
-    };
-
-    async function loadStock() {
-      const timeElem = document.getElementById("lastUpdated");
-      const elBlind = document.getElementById("stock-blindbox");
-      const elOmamori = document.getElementById("stock-omamori");
-      const elSouvenir = document.getElementById("stock-souvenir");
-
-      if (!SHEET_CSV_URL) {
-        // 使用預設數值
-        elBlind.innerText = fallbackStock.blindbox;
-        elOmamori.innerText = fallbackStock.omamori;
-        elSouvenir.innerText = fallbackStock.souvenir;
-        timeElem.innerText = "最後更新：" + new Date().toLocaleDateString();
-        return;
-      }
-
-      try {
-        const res = await fetch(SHEET_CSV_URL);
-        const text = await res.text();
-        const rows = text.split("\n").map(r => r.split(","));
-        
-        // 假設 Google 表格格式：第一列為標題，A2:公仔, B2:數量
-        if(rows[1]) elBlind.innerText = rows[1][1].trim();
-        if(rows[2]) elOmamori.innerText = rows[2][1].trim();
-        if(rows[3]) elSouvenir.innerText = rows[3][1].trim();
-        
-        const now = new Date();
-        timeElem.innerText = `最後更新：${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
-      } catch (err) {
-        elBlind.innerText = fallbackStock.blindbox;
-        elOmamori.innerText = fallbackStock.omamori;
-        elSouvenir.innerText = fallbackStock.souvenir;
-        timeElem.innerText = "資料連線中";
-      }
-    }
-
-    loadStock();
-  </script>
-</body>
-</html>
+      <form id="addStoreForm" onsubmit="addNewStore(event)">
+        <div class="admin-form-group">
+          <label>店家所屬島嶼</label>
+          <select id="modalStoreIsland" required>
+            <option value="南竿">南竿</option>
+            <option value="北竿">北竿</option>
+            <option value="莒光">莒光</option>
